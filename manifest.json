@@ -1,10 +1,7 @@
 {
   "manifest_version": 3,
-
   "name": "Mist",
-
-  "version": "1.0.0",
-
+  "version": "1.0.1",
   "description": "A beautiful frosted-glass new tab for Chrome.",
 
   "permissions": [
@@ -17,7 +14,7 @@
   ],
 
   "oauth2": {
-    "client_id": "614309617393-2ssbpt98e8q29h5genjnc9jpsufq1jtm.apps.googleusercontent.com",
+    "client_id": "614309617393-juggcahof4fal3acbqa14qibtmd6akps.apps.googleusercontent.com",
     "scopes": [
       "openid",
       "profile",
