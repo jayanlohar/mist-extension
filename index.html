@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>New Tab</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+  <!-- =====================================================
+       BACKGROUND
+  ====================================================== -->
+
+  <div class="background-glow background-glow-top"></div>
+
+  <div class="background-glow background-glow-bottom"></div>
+
+  <div class="ambient-orb orb-one"></div>
+
+  <div class="ambient-orb orb-two"></div>
+
+
+  <!-- =====================================================
+       TOP BAR
+  ====================================================== -->
+
+  <header class="top-bar">
+
+    <div class="mac-controls">
+
+      <button
+        class="mac-btn close"
+        id="mac-close"
+        title="Close"
+        aria-label="Close"
+        type="button"
+      ></button>
+
+
+      <button
+        class="mac-btn minimize"
+        id="mac-minimize"
+        title="Minimize"
+        aria-label="Minimize"
+        type="button"
+      ></button>
+
+
+      <button
+        class="mac-btn maximize"
+        id="mac-maximize"
+        title="Maximize"
+        aria-label="Maximize"
+        type="button"
+      ></button>
+
+    </div>
+
+
+    <nav class="top-navigation">
+
+      <a
+        href="https://mail.google.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Gmail
+      </a>
+
+
+      <a
+        href="https://images.google.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Images
+      </a>
+
+
+      <!-- SETTINGS -->
+
+      <button
+        class="settings-btn"
+        id="settings-btn"
+        title="Settings"
+        aria-label="Settings"
+        type="button"
+      >
+
+        <svg viewBox="0 0 24 24">
+
+          <path d="
+            M19.43 12.98c.04-.32.07-.65.07-.98
+            s-.02-.66-.07-.98l2.11-1.65
+            c.19-.15.24-.42.12-.64l-2-3.46
+            c-.12-.22-.37-.31-.6-.22l-2.49 1
+            c-.52-.4-1.08-.73-1.69-.98L14.5 2.42
+            C14.47 2.18 14.25 2 14 2h-4
+            c-.25 0-.46.18-.5.42L9.12 5.07
+            c-.61.25-1.17.59-1.69.98l-2.49-1
+            c-.23-.08-.48 0-.6.22l-2 3.46
+            c-.13.22-.07.49.12.64l2.11 1.65
+            c-.04.32-.08.65-.08.98s.03.66.08.98
+            l-2.11 1.65c-.19.15-.24.42-.12.64
+            l2 3.46c.12.22.37.31.6.22l2.49-1
+            c.52.4 1.08.73 1.69.98l.38 2.65
+            c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42
+            l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1
+            c.23.08.48 0 .6-.22l2-3.46
+            c.12-.22.07-.49-.12-.64l-2.11-1.65z
+
+            M12 15.5A3.5 3.5 0 1 1 12 8
+            a3.5 3.5 0 0 1 0 7.5z
+          "/>
+
+        </svg>
+
+      </button>
+
+
+      <!-- =================================================
+           PROFILE
+      ================================================== -->
+
+      <div class="profile-container">
+
+        <button
+          id="profile-btn"
+          class="profile-btn"
+          title="Google Account"
+          aria-label="Open Google Account menu"
+          aria-expanded="false"
+          type="button"
+        >
+
+          <span class="profile-avatar-ring">
+
+            <!-- Fallback first letter -->
+
+            <span
+              id="profile-avatar"
+              class="profile-avatar"
+            >
+              ?
+            </span>
+
+
+            <!-- Google profile image -->
+
+            <img
+              id="profile-image"
+              class="profile-image hidden"
+              alt="Google profile picture"
+            >
+
+
+            <span class="profile-status"></span>
+
+          </span>
+
+        </button>
+
+
+        <!-- =================================================
+             PROFILE CARD
+        ================================================== -->
+
+        <div
+          id="profile-card"
+          class="profile-card hidden"
+          data-signed-in="false"
+        >
+
+          <div class="profile-card-glow"></div>
+
+          <div class="profile-glass-highlight"></div>
+
+
+          <div class="profile-header">
+
+            <div class="profile-avatar-large-wrapper">
+
+              <div
+                id="profile-avatar-large"
+                class="profile-avatar-large"
+              >
+                ?
+              </div>
+
+
+              <img
+                id="profile-image-large"
+                class="profile-image-large hidden"
+                alt="Google profile picture"
+              >
+
+
+              <span class="profile-status-large"></span>
+
+            </div>
+
+
+            <div
+              id="profile-name"
+              class="profile-name"
+            >
+              Not signed in
+            </div>
+
+
+            <div
+              id="profile-email"
+              class="profile-email"
+            >
+              Sign in with Google
+            </div>
+
+
+            <div
+              id="profile-status-label"
+              class="profile-status-label"
+            >
+
+              <span></span>
+
+              <span id="profile-status-label-text">
+                Not signed in
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- MANAGE / SIGN IN -->
+
+          <button
+            class="manage-account-btn auth-login"
+            id="manage-account-btn"
+            type="button"
+          >
+
+            <span class="manage-icon">
+
+              <svg viewBox="0 0 24 24">
+
+                <path d="
+                  M12 12c2.21 0 4-1.79
+                  4-4s-1.79-4-4-4-4
+                  1.79-4 4 1.79 4
+                  4 4zm0 2c-2.67 0
+                  -8 1.34-8 4v2h16v-2
+                  c0-2.66-5.33-4-8-4z
+                "/>
+
+              </svg>
+
+            </span>
+
+
+            <span id="manage-account-text">
+              Sign in with Google
+            </span>
+
+
+            <svg
+              class="arrow-icon"
+              viewBox="0 0 24 24"
+            >
+
+              <path d="M9 18l6-6-6-6"/>
+
+            </svg>
+
+          </button>
+
+
+          <div class="profile-divider"></div>
+
+
+          <!-- QUICK ACTIONS -->
+
+          <div class="profile-quick-actions">
+
+            <button
+              class="profile-action"
+              id="profile-history"
+              title="Search history"
+              type="button"
+            >
+
+              <span class="profile-action-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                  <path d="
+                    M13 3a9 9 0 1 0
+                    8.94 10h-2.02
+                    A7 7 0 1 1 13 5v4
+                    l4 2-1 1.73-3-1.5V3z
+                  "/>
+
+                </svg>
+
+              </span>
+
+
+              <span>
+                History
+              </span>
+
+            </button>
+
+
+            <button
+              class="profile-action"
+              id="profile-passwords"
+              title="Passwords"
+              type="button"
+            >
+
+              <span class="profile-action-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                  <path d="
+                    M17 8h-1V6
+                    a4 4 0 0 0-8 0v2H7
+                    c-1.1 0-2 .9-2 2v9
+                    c0 1.1.9 2 2 2h10
+                    c1.1 0 2-.9 2-2v-9
+                    c0-1.1-.9-2-2-2zm-5
+                    9a2 2 0 1 1 0-4
+                    2 2 0 0 1 0 4zm2-9h-4V6
+                    a2 2 0 1 1 4 0v2z
+                  "/>
+
+                </svg>
+
+              </span>
+
+
+              <span>
+                Passwords
+              </span>
+
+            </button>
+
+
+            <button
+              class="profile-action"
+              id="profile-personalize"
+              title="Personalize"
+              type="button"
+            >
+
+              <span class="profile-action-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                  <path d="
+                    M12 3a9 9 0 1 0
+                    0 18h1.2
+                    c.99 0 1.8-.81
+                    1.8-1.8
+                    0-.49-.2-.94-.51-1.27
+                    -.31-.34-.49-.79-.49-1.27
+                    0-1.03.83-1.86
+                    1.86-1.86H18
+                    c1.66 0 3-1.34
+                    3-3A9 9 0 0 0 12 3z
+                  "/>
+
+                </svg>
+
+              </span>
+
+
+              <span>
+                Personalize
+              </span>
+
+            </button>
+
+          </div>
+
+
+          <div class="profile-divider"></div>
+
+
+          <!-- ACCOUNT STATE -->
+
+          <div class="profile-sync">
+
+            <span
+              id="sync-dot"
+              class="sync-dot"
+            ></span>
+
+
+            <span id="sync-text">
+              Local profile
+            </span>
+
+
+            <small id="sync-status">
+              Ready
+            </small>
+
+          </div>
+
+
+          <!-- SIGN OUT -->
+
+          <button
+            id="sign-out-btn"
+            class="profile-footer-btn"
+            type="button"
+          >
+
+            <svg viewBox="0 0 24 24">
+
+              <path d="
+                M10 17l5-5-5-5v3H3v4h7v3zm9-14h-8
+                c-1.1 0-2 .9-2 2v3h2V5h8v14
+                h-8v-3H9v3c0 1.1.9 2 2 2h8
+                c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z
+              "/>
+
+            </svg>
+
+
+            <span>
+              Sign out
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =====================================================
+       SETTINGS PANEL
+  ====================================================== -->
+
+  <aside
+    id="settings-panel"
+    class="settings-panel hidden"
+  >
+
+    <div class="settings-heading">
+
+      <div>
+
+        <span class="settings-eyebrow">
+          NEW TAB
+        </span>
+
+        <h2>
+          Settings
+        </h2>
+
+        <p>
+          Customize your new tab
+        </p>
+
+      </div>
+
+
+      <button
+        id="settings-close"
+        class="settings-close"
+        aria-label="Close settings"
+        type="button"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <section class="settings-section">
+
+      <div class="settings-title">
+        Appearance
+      </div>
+
+
+      <button
+        class="settings-row"
+        id="toggle-glow"
+        type="button"
+      >
+
+        <span class="settings-row-icon blue">
+
+          <svg viewBox="0 0 24 24">
+
+            <path d="
+              M12 3a7 7 0 0 0-4 12.74V18h8
+              v-2.26A7 7 0 0 0 12 3z
+              M10 20h4v2h-4z
+            "/>
+
+          </svg>
+
+        </span>
+
+
+        <span class="settings-row-text">
+
+          <strong>
+            Ambient glow
+          </strong>
+
+          <small>
+            Soft background lighting
+          </small>
+
+        </span>
+
+
+        <span
+          class="toggle active"
+          id="glow-toggle"
+        >
+          <span></span>
+        </span>
+
+      </button>
+
+
+      <button
+        class="settings-row"
+        id="toggle-animation"
+        type="button"
+      >
+
+        <span class="settings-row-icon purple">
+
+          <svg viewBox="0 0 24 24">
+
+            <path d="
+              M13 2L3 14h7l-1 8
+              10-12h-7l1-8z
+            "/>
+
+          </svg>
+
+        </span>
+
+
+        <span class="settings-row-text">
+
+          <strong>
+            Fluid animations
+          </strong>
+
+          <small>
+            Search-edge light effects
+          </small>
+
+        </span>
+
+
+        <span
+          class="toggle active"
+          id="animation-toggle"
+        >
+          <span></span>
+        </span>
+
+      </button>
+
+    </section>
+
+
+    <section class="settings-section">
+
+      <div class="settings-title">
+        Actions
+      </div>
+
+
+      <button
+        class="settings-row"
+        id="settings-reset"
+        type="button"
+      >
+
+        <span class="settings-row-icon orange">
+
+          <svg viewBox="0 0 24 24">
+
+            <path d="
+              M17.65 6.35A7.95 7.95
+              0 0 0 12 4V1L8 5l4 4V6
+              a6 6 0 1 1-5.65 4H4.1
+              A8 8 0 1 0 17.65 6.35z
+            "/>
+
+          </svg>
+
+        </span>
+
+
+        <span class="settings-row-text">
+
+          <strong>
+            Reset shortcuts
+          </strong>
+
+          <small>
+            Restore the original shortcuts
+          </small>
+
+        </span>
+
+
+        <span class="settings-arrow">
+          ›
+        </span>
+
+      </button>
+
+    </section>
+
+
+    <div class="settings-footer">
+      Mist
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
+  <main class="main-content">
+
+
+    <!-- CLOCK -->
+
+    <section class="clock-section">
+
+      <div
+        id="greeting"
+        class="greeting"
+      >
+        Good evening
+      </div>
+
+
+      <div
+        id="clock"
+        class="clock"
+      >
+        07:59 PM
+      </div>
+
+
+      <div
+        id="date"
+        class="date"
+      >
+        Thursday, August 13
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SEARCH
+    ================================================== -->
+
+    <div
+      class="search-shell"
+      id="search-shell"
+    >
+
+      <div
+        class="search-fluid"
+        aria-hidden="true"
+      >
+
+        <span class="fluid-light fluid-blue"></span>
+
+        <span class="fluid-light fluid-purple"></span>
+
+        <span class="fluid-light fluid-red"></span>
+
+        <span class="fluid-light fluid-cyan"></span>
+
+      </div>
+
+
+      <div
+        class="search-aura"
+        aria-hidden="true"
+      ></div>
+
+
+      <form
+        id="search-form"
+        class="search-form"
+      >
+
+        <div class="search-icon-wrap">
+
+          <svg
+            class="search-icon"
+            viewBox="0 0 24 24"
+          >
+
+            <path d="
+              M10.5 4a6.5 6.5 0 1 0
+              4.08 11.56l4.43 4.43
+              1.41-1.41-4.43-4.43
+              A6.5 6.5 0 0 0
+              10.5 4zm0 2a4.5
+              4.5 0 1 1 0 9
+              4.5 4.5 0 0 1 0-9z
+            "/>
+
+          </svg>
+
+        </div>
+
+
+        <input
+          id="search-input"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="Search Google or type a URL..."
+          aria-label="Search"
+        >
+
+
+        <button
+          type="button"
+          id="mic-btn"
+          class="search-action"
+          title="Voice Search"
+          aria-label="Voice Search"
+        >
+
+          <svg viewBox="0 0 24 24">
+
+            <path d="
+              M12 14a3 3 0 0 0 3-3V6a3 3
+              0 0 0-6 0v5a3 3 0 0 0 3
+              3zm5-3a5 5 0 0 1-10 0H5
+              a7 7 0 0 0 6 6.92V21H8v2
+              h8v-2h-3v-3.08A7 7 0 0 0 19
+              11h-2z
+            "/>
+
+          </svg>
+
+        </button>
+
+
+        <button
+          type="button"
+          id="lens-btn"
+          class="search-action lens-action"
+          title="Search by image"
+          aria-label="Search by image"
+        >
+
+          <svg viewBox="0 0 24 24">
+
+            <path d="
+              M9 3l1.5-2h3L15 3h3
+              c1.1 0 2 .9 2 2v12
+              c0 1.1-.9 2-2 2H6
+              c-1.1 0-2-.9-2-2V5
+              c0-1.1.9-2 2-2h3zm3
+              13a4 4 0 1 0 0-8
+              4 4 0 0 0 0 8zm0-2
+              a2 2 0 1 1 0-4
+              2 2 0 0 1 0 4z
+            "/>
+
+          </svg>
+
+        </button>
+
+      </form>
+
+    </div>
+
+
+    <!-- =================================================
+         SHORTCUTS
+    ================================================== -->
+
+    <section
+      id="shortcuts-grid"
+      class="shortcuts-grid"
+    ></section>
+
+  </main>
+
+
+  <!-- =====================================================
+       SHORTCUT MODAL
+  ====================================================== -->
+
+  <div
+    id="modal-overlay"
+    class="modal-overlay hidden"
+  >
+
+    <div
+      class="shortcut-modal"
+      role="dialog"
+      aria-modal="true"
+    >
+
+      <div class="modal-glow"></div>
+
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="modal-eyebrow">
+            QUICK LINK
+          </span>
+
+          <h2 id="modal-title">
+            Add Shortcut
+          </h2>
+
+          <p>
+            Create a quick link
+          </p>
+
+        </div>
+
+
+        <button
+          id="modal-close"
+          class="modal-close"
+          aria-label="Close"
+          type="button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="modal-body">
+
+        <label for="shortcut-name">
+          Name
+        </label>
+
+        <input
+          id="shortcut-name"
+          type="text"
+          placeholder="e.g. YouTube"
+        >
+
+
+        <label for="shortcut-url">
+          URL
+        </label>
+
+        <input
+          id="shortcut-url"
+          type="text"
+          placeholder="https://example.com"
+        >
+
+      </div>
+
+
+      <div class="modal-actions">
+
+        <button
+          id="modal-delete"
+          class="modal-delete hidden"
+          type="button"
+        >
+          Delete
+        </button>
+
+
+        <div class="modal-right-actions">
+
+          <button
+            id="modal-cancel"
+            class="modal-cancel"
+            type="button"
+          >
+            Cancel
+          </button>
+
+
+          <button
+            id="modal-save"
+            class="modal-save"
+            type="button"
+          >
+            Save
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       TOAST
+  ====================================================== -->
+
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+  >
+
+    <span class="toast-dot"></span>
+
+    <span id="toast-message">
+      Done
+    </span>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
